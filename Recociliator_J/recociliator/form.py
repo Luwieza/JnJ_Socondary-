@@ -1,7 +1,7 @@
 # Import Django's form tools
 from django import forms
 
-# -------------------------- CLASS OF FORM FIELD ---------------------------------------
+# -------------------------- CLASS OF FORM FIELDS ---------------------------------------
 
 # Defines a Class that consist of form fields.
 class SplitNumberForm(forms.Form):

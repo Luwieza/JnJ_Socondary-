@@ -8,7 +8,7 @@ from .form import SplitNumberForm
 
 
 # Define a view function to handle the split number input page
-def split_input_view(request):
+def split_number_view(request):
     # Check if the request is a POST (i.e., the form was submitted)
     if request.method == 'POST':
         # Create a form instance containing the submitted data
@@ -35,4 +35,4 @@ def split_input_view(request):
         form = SplitNumberForm()
 
     # Render the template split_input.html, passing the form object to display it
-    return render(request, 'split_input.html', {'form': form})
+    return render(request, 'split_number.html', {'form': form})

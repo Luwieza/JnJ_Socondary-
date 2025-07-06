@@ -16,4 +16,4 @@ def split_yes_input(request):
         form = SplitYesForm()
     
     # Render the form template
-    return render(request, 'split_yes_input.html', {'form': form})
+    return render(request, 'yes.html', {'form': form})

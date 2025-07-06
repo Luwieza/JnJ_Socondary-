@@ -1,0 +1,11 @@
+{% if success %}
+<h2>✅ Calculation Successful</h2>
+<p>Split Number: {{ split_number }}</p>
+<p>Carton Number: {{ first_carton_num }}</p>
+<p>QC Samples: {{ qc_sample }}</p>
+<p>Rejected Lenses: {{ quantity_of_rejected_products }}</p>
+{% else %}
+<h2>{{ error_message }}</h2>
+{% endif %}
+
+<a href="{% url 'split_no' %}">Try Again</a>

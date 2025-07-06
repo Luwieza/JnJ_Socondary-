@@ -90,4 +90,4 @@ def split_no_view(request):
         # For GET request, show an empty form
         form = SplitNoForm()
 
-    return render(request, 'split_no_form.html', {'form': form})
+    return render(request, 'no.html', {'form': form})

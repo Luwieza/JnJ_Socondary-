@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 
 # 🎯 Performs calculations and shows results or errors
-def split_yes_result_view(request):
+def split_yes_result(request):
     # Retrieve stored input from the session
     data = request.session.get('split_yes_data')
     if not data:

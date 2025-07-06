@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .form import SplitYesForm
 
 # 🎯 Displays the form for the user to input all the data
-def split_yes_input_view(request):
+def split_yes_input(request):
     if request.method == 'POST':
         # Form submitted
         form = SplitYesForm(request.POST)

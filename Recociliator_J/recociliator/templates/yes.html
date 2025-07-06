@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Split Yes Input</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 2rem;
+      }
+      form {
+        max-width: 500px;
+        padding: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      .helptext {
+        font-size: 0.9em;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Enter Details (Split = Yes)</h1>
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

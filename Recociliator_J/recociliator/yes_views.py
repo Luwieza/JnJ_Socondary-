@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .form import SplitYesForm
+from .form_yes import SplitYesForm
 
 # 🎯 Displays the form for the user to input all the data
 def split_yes_input(request):

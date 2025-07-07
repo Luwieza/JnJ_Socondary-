@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from .form_no import SplitNoForm
 # -----------------------------------------------
 
-def split_no_view(request):
+def split_no_input(request):
     """
     View to process the workflow when the user confirms 'No' (not the last split).
     """

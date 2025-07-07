@@ -8,7 +8,7 @@ from .form import SplitNumberForm
 
 
 # Define a view function to handle the split number input page
-def split_number_view(request):
+def split_number(request):
     # Check if the request is a POST (i.e., the form was submitted)
     if request.method == 'POST':
         # Create a form instance containing the submitted data

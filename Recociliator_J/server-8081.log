@@ -38,3 +38,13 @@ Not Found: /favicon.ico
 [12/Oct/2025 18:04:38] "GET /split-number/ HTTP/1.1" 200 1726
 [12/Oct/2025 18:04:40] "GET /split-number/ HTTP/1.1" 200 1726
 [12/Oct/2025 18:04:40] "GET /split-number/ HTTP/1.1" 200 1726
+Not Found: /apple-touch-icon.png
+Not Found: /apple-touch-icon-precomposed.png
+Not Found: /favicon.ico
+[12/Oct/2025 18:15:25] "GET /apple-touch-icon.png HTTP/1.1" 404 4082
+[12/Oct/2025 18:15:25] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 4118
+[12/Oct/2025 18:15:25] "GET /favicon.ico HTTP/1.1" 404 4055
+[12/Oct/2025 18:15:44] "GET /split-number/ HTTP/1.1" 200 1726
+[12/Oct/2025 18:15:44] "GET /static/styles.css HTTP/1.1" 200 5797763
+Not Found: /favicon.ico
+[12/Oct/2025 18:15:45] "GET /favicon.ico HTTP/1.1" 404 4055

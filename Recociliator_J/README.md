@@ -17,7 +17,7 @@ This application provides a streamlined interface for lens quality control calcu
 ## 🚀 Features
 
 - ✅ **Interactive Forms**: Step-by-step guided input process
-- ✅ **Calculation Engine**: Built-in logic for lens rejection analysis  
+- ✅ **Calculation Engine**: Built-in logic for lens rejection analysis
 - ✅ **Professional Design**: J&J Vision Care branding and colors
 - ✅ **Mobile Optimized**: Responsive design with iOS compatibility fixes
 - ✅ **Session Management**: Maintains user data across form steps
@@ -42,28 +42,33 @@ asgiref==3.8.1
 ## 🔧 Installation & Setup
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/Luwieza/JnJ_Socondary-.git
 cd JnJ_Socondary-/Recociliator_J
 ```
 
 ### 2. Create Virtual Environment
+
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
 ### 3. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 4. Run Migrations
+
 ```bash
 python manage.py migrate
 ```
 
 ### 5. Start Development Server
+
 ```bash
 python manage.py runserver
 ```
@@ -141,6 +146,7 @@ python manage.py runserver
 ```
 
 Navigate through:
+
 1. Split number entry (`/`)
 2. Yes/No confirmation
 3. Form completion (`/split-yes/` or `/split-no/`)
@@ -149,7 +155,9 @@ Navigate through:
 ## 🔧 Utilities
 
 ### Background Image Inlining
+
 The project includes a utility to inline the background image:
+
 ```bash
 python tools/inline_bg.py
 ```
@@ -159,9 +167,11 @@ This converts the background image to base64 and embeds it directly in the CSS f
 ## 🚀 Deployment
 
 ### Production Configuration
+
 For production deployment:
 
 1. Set environment variables:
+
 ```bash
 export SECRET_KEY="your-production-secret-key"
 export DEBUG=False
@@ -169,28 +179,33 @@ export ALLOWED_HOSTS="your-domain.com"
 ```
 
 2. Collect static files:
+
 ```bash
 python manage.py collectstatic
 ```
 
 3. Run with production server:
+
 ```bash
 gunicorn Recociliator_J.wsgi:application
 ```
 
 ### Railway Deployment
+
 Ready for deployment to Railway:
+
 1. Connect your GitHub repository
 2. Railway will automatically detect Django
 3. Set environment variables in Railway dashboard
 
 ### Docker Support
+
 Docker deployment ready with standard Django containerization.
 
 ## 📊 Application Flow
 
 ```
-Start (/) → Split Number Input → Confirmation → 
+Start (/) → Split Number Input → Confirmation →
     ├── Yes → Final Split Form → Results
     └── No → Non-Final Split Form → Results
 ```
@@ -209,7 +224,7 @@ This project is proprietary software for Johnson & Johnson Vision Care operation
 
 ## 👥 Authors
 
-- **Luwieza** - *Initial work* - [GitHub](https://github.com/Luwieza)
+- **Luwieza** - _Initial work_ - [GitHub](https://github.com/Luwieza)
 
 ## 🏢 Johnson & Johnson Vision Care
 
@@ -218,4 +233,4 @@ This application supports the manufacturing quality control processes at Johnson
 ---
 
 **Johnson & Johnson Vision Care** - Professional Lens Rejection Calculator  
-*Ensuring Quality in Vision Care Manufacturing*
+_Ensuring Quality in Vision Care Manufacturing_

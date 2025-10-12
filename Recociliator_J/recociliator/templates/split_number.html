@@ -1,13 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Split Number Input</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professional Lens Calculator</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
   </head>
   <body>
-    <h1>Lens Rejection Calculator - Step 1</h1>
-    <form method="post">
-      {% csrf_token %} {{ form.as_p }}
-      <button type="submit">Continue</button>
-    </form>
+    <div class="container">
+      <div class="brand">
+        <img
+          src="https://logos-world.net/wp-content/uploads/2020/09/Johnson-Johnson-Logo.png"
+          alt="J&J"
+          class="brand-logo"
+        />
+        <span class="brand-title">VISION CARE</span>
+      </div>
+      <h1>Lens Rejection Calculator</h1>
+
+      <div class="form-section">
+        <form method="post">
+          {% csrf_token %}
+
+          <div class="form-group">
+            <label for="{{ form.split_number.id_for_label }}"
+              >{{ form.split_number.label }}</label
+            >
+            {{ form.split_number }} {% if form.split_number.errors %}
+            <ul class="errorlist">
+              {% for error in form.split_number.errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %} {% if form.split_number.help_text %}
+            <div class="helptext">{{ form.split_number.help_text }}</div>
+            {% endif %}
+          </div>
+
+          <div class="form-group">
+            <label for="{{ form.confirm_split.id_for_label }}"
+              >{{ form.confirm_split.label }}</label
+            >
+            {{ form.confirm_split }} {% if form.confirm_split.errors %}
+            <ul class="errorlist">
+              {% for error in form.confirm_split.errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %} {% if form.confirm_split.help_text %}
+            <div class="helptext">{{ form.confirm_split.help_text }}</div>
+            {% endif %}
+          </div>
+
+          <button type="submit" class="calculator-button">
+            ⚡ Proceed to Analysis
+          </button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

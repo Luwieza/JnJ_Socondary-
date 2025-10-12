@@ -1,10 +1,17 @@
 # Import Django shortcuts:
 # - render: to display an HTML template
 # - redirect: to send the user to another page after success
-from django.shortcuts import render, redirect
+from .calculation_views import split_yes_result
+from django.shortcuts import render, redirect # type: ignore
 
 # Import the SplitNumberForm you created in forms.py
 from .form import SplitNumberForm
+
+
+# Main calculator view - entry point for the app
+def calculator(request):
+    """Main calculator page - redirects to split number input"""
+    return redirect('split_number')
 
 
 # Define a view function to handle the split number input page
@@ -36,3 +43,29 @@ def split_number(request):
 
     # Render the template split_input.html, passing the form object to display it
     return render(request, 'split_number.html', {'form': form})
+
+
+# Next step view - decides which form to show based on user's choice
+def next_step(request):
+    """Route user to appropriate form based on their yes/no confirmation"""
+    # Get the confirmation from session
+    confirm_split = request.session.get('confirm_split')
+
+    if not confirm_split:
+        # If no session data, redirect back to start
+        return redirect('calculator')
+
+    # Route based on user's choice
+    if confirm_split == 'yes':
+        return redirect('split_yes_input')
+    else:  # confirm_split == 'no'
+        return redirect('split_no_input')
+
+
+# Import calculation view function to use it
+
+# Wrapper view for split_yes_result to match URL pattern
+
+def split_yes_result_view(request):
+    """Wrapper for the calculation result view"""
+    return split_yes_result(request)

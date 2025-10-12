@@ -55,7 +55,7 @@ ROOT_URLCONF = "Recociliator_J.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [], # it should be empty
+        "DIRS": [],  # it should be empty
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -115,11 +115,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "/Recociliator_J/static/"
+STATIC_URL = "/static/"
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",  # 🔍 This tells Django where to look for static files
-]
+# Static files will be collected from app-specific static folders
+# No need for STATICFILES_DIRS since we're using app-level static files
 
 
 # Default primary key field type

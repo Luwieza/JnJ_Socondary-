@@ -2,8 +2,8 @@
 from django.urls import path
 
 from django.urls import path
-from .views import calculator, split_number, next_step   # views.py
-from .yes_views import split_yes_input, split_yes_result_view
+from .views import calculator, split_number, next_step, split_yes_result_view   # views.py
+from .yes_views import split_yes_input
 from .no_views import split_no_input
 
 
@@ -14,16 +14,19 @@ urlpatterns = [
     # Calculator page
     path('calculator/', calculator, name='calculator'),
 
+    # Split number input page
+    path('split-number/', split_number, name='split_number'),
+
     # Next step page
     path('next/', next_step, name='next_step'),
-    
+
     # Form yes input page
     path('split-yes/', split_yes_input, name='split_yes_input'),
-    
+
     # Result yes calculation page
     path('split-yes/result/', split_yes_result_view, name='split_yes_result'),
-    
-    # Results yes calculation page
-    path('split-no/', split_no_input, name='no_views'),
-    
+
+    # Form no input page
+    path('split-no/', split_no_input, name='split_no_input'),
+
 ]

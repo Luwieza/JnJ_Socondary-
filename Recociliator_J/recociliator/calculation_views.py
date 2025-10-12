@@ -1,11 +1,17 @@
+from django.shortcuts import render
 from django.http import HttpResponse
 
 # 🎯 Performs calculations and shows results or errors
+
+
 def split_yes_result(request):
     # Retrieve stored input from the session
     data = request.session.get('split_yes_data')
     if not data:
-        return HttpResponse("No data found. Please start over.", status=400)
+        return render(request, 'split_yes_result.html', {
+            'success': False,
+            'error_message': 'No data found. Please start over.'
+        })
 
     # Extract fields
     first_carton_num = data['first_carton_num']
@@ -26,10 +32,10 @@ def split_yes_result(request):
     # Check for over packing
     if total_quantity_of_packed_products >= lenses_to_pack:
         difference = total_quantity_of_packed_products - lenses_to_pack
-        return HttpResponse(
-            f"❌ Error: You have packed {difference} lenses MORE than the total lenses to pack.<br>"
-            "Please check your inputs and try again."
-        )
+        return render(request, 'split_yes_result.html', {
+            'success': False,
+            'error_message': f"❌ Error: You have packed {difference} lenses MORE than the total lenses to pack. Please check your inputs and try again."
+        })
 
     # Calculate rejected lenses
     quantity_of_rejected_products = lenses_to_pack - total_quantity_of_packed_products
@@ -38,15 +44,19 @@ def split_yes_result(request):
     # Final validation
     if sum_of_all_lenses != lenses_to_pack:
         difference = abs(sum_of_all_lenses - lenses_to_pack)
-        return HttpResponse(
-            f"❌ Validation failed by {difference} lenses. Restarting..."
-        )
+        return render(request, 'split_yes_result.html', {
+            'success': False,
+            'error_message': f"❌ Validation failed by {difference} lenses. Please recheck your inputs."
+        })
+
+    # Get split number from session for display
+    split_number = request.session.get('split_number', 'N/A')
 
     # Success output
-    return HttpResponse(
-        f"✅ Calculation Successful:<br>"
-        f"Split Number: (from previous step)<br>"
-        f"Carton Number: {first_carton_num}<br>"
-        f"QC Samples: {qc_sample}<br>"
-        f"Rejected Lenses: {quantity_of_rejected_products}"
-    )
+    return render(request, 'split_yes_result.html', {
+        'success': True,
+        'split_number': split_number,
+        'first_carton_num': first_carton_num,
+        'qc_sample': qc_sample,
+        'quantity_of_rejected_products': quantity_of_rejected_products
+    })

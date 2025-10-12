@@ -17,7 +17,7 @@ This application provides a streamlined interface for lens quality control calcu
 ## 🚀 Features
 
 - ✅ **Interactive Forms**: Step-by-step guided input process
-- ✅ **Calculation Engine**: Built-in logic for lens rejection analysis  
+- ✅ **Calculation Engine**: Built-in logic for lens rejection analysis
 - ✅ **Professional Design**: J&J Vision Care branding and colors
 - ✅ **Mobile Optimized**: Responsive design with iOS compatibility fixes
 - ✅ **Session Management**: Maintains user data across form steps
@@ -40,6 +40,7 @@ This application provides a streamlined interface for lens quality control calcu
 ## 🔧 Quick Start
 
 ### 1. Clone and Setup
+
 ```bash
 git clone https://github.com/Luwieza/JnJ_Socondary-.git
 cd JnJ_Socondary-
@@ -54,6 +55,7 @@ pip install -r requirements.txt
 ```
 
 ### 2. Run the Application
+
 ```bash
 # Run migrations
 python manage.py migrate
@@ -111,6 +113,7 @@ JnJ_Socondary-/
 ## 🚀 Deployment
 
 This application is ready for deployment to:
+
 - **Railway**: Automatic Django detection
 - **Heroku**: Standard Django deployment
 - **Docker**: Containerization support included
@@ -130,4 +133,4 @@ Proprietary software for Johnson & Johnson Vision Care operations.
 ---
 
 **Johnson & Johnson Vision Care** - Professional Lens Rejection Calculator  
-*Ensuring Quality in Vision Care Manufacturing*
+_Ensuring Quality in Vision Care Manufacturing_

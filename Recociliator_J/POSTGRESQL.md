@@ -1,4 +1,5 @@
 # PostgreSQL Migration Guide
+
 # Johnson & Johnson Vision Care - Lens Rejection Calculator
 
 ## 🐘 Upgrading to PostgreSQL
@@ -6,6 +7,7 @@
 ### 1. Install PostgreSQL Locally (Development)
 
 #### macOS (using Homebrew)
+
 ```bash
 brew install postgresql
 brew services start postgresql
@@ -19,6 +21,7 @@ GRANT ALL PRIVILEGES ON DATABASE jnj_lens_calculator TO jnj_user;
 ```
 
 #### Ubuntu/Debian
+
 ```bash
 sudo apt-get update
 sudo apt-get install postgresql postgresql-contrib
@@ -33,6 +36,7 @@ GRANT ALL PRIVILEGES ON DATABASE jnj_lens_calculator TO jnj_user;
 ### 2. Update Local Environment
 
 Create `.env` file in your project root:
+
 ```bash
 # Development PostgreSQL
 DATABASE_URL=postgresql://jnj_user:secure_password@localhost:5432/jnj_lens_calculator
@@ -42,6 +46,7 @@ ALLOWED_HOSTS=localhost,127.0.0.1
 ```
 
 ### 3. Install Dependencies
+
 ```bash
 source JNJ/bin/activate
 pip install -r requirements.txt
@@ -50,11 +55,13 @@ pip install -r requirements.txt
 ### 4. Migrate Data (if needed)
 
 #### Export existing SQLite data
+
 ```bash
 python manage.py dumpdata --natural-foreign --natural-primary -e contenttypes -e auth.Permission > datadump.json
 ```
 
 #### Switch to PostgreSQL and migrate
+
 ```bash
 # Load environment variables
 export $(cat .env | xargs)
@@ -69,6 +76,7 @@ python manage.py loaddata datadump.json
 ### 5. Production PostgreSQL (Railway)
 
 Railway automatically provisions PostgreSQL:
+
 - Database URL is provided via `DATABASE_URL` environment variable
 - No manual setup required
 - Automatic backups included
@@ -76,6 +84,7 @@ Railway automatically provisions PostgreSQL:
 ### 6. Environment Variables for Production
 
 **Required:**
+
 ```
 DATABASE_URL=postgresql://user:pass@host:port/database  # Auto-provided by Railway
 SECRET_KEY=your-super-secure-production-key
@@ -84,6 +93,7 @@ ALLOWED_HOSTS=your-app.up.railway.app
 ```
 
 **Optional Security (HTTPS):**
+
 ```
 SECURE_SSL_REDIRECT=True
 SESSION_COOKIE_SECURE=True
@@ -94,6 +104,7 @@ SECURE_HSTS_SECONDS=31536000
 ### 7. Database Performance Settings
 
 For high-traffic production, consider adding to settings.py:
+
 ```python
 # Database connection pooling
 DATABASES['default']['OPTIONS'] = {
@@ -115,11 +126,13 @@ CACHES = {
 ### 8. Backup Strategy
 
 **Railway (Automatic):**
+
 - Daily automated backups
 - Point-in-time recovery available
 - Access via Railway dashboard
 
 **Manual Backup:**
+
 ```bash
 # Create backup
 pg_dump $DATABASE_URL > backup_$(date +%Y%m%d).sql
@@ -131,6 +144,7 @@ psql $DATABASE_URL < backup_20251012.sql
 ### 9. Monitoring
 
 Add to your production environment:
+
 ```python
 # Database query logging (development only)
 if DEBUG:
@@ -156,8 +170,9 @@ python manage.py runserver
 ---
 
 **Next Steps:**
+
 1. Set up local PostgreSQL
-2. Test migration with development database  
+2. Test migration with development database
 3. Deploy to Railway (PostgreSQL auto-configured)
 4. Monitor performance and optimize as needed
 

@@ -16,10 +16,10 @@ class SplitNoForm(forms.Form):
         widget=forms.TextInput(attrs={'placeholder': 'e.g., 001'}),
     )
 
-    # Number of lenses in a case/box: 1440 or 30000
+    # Number of lenses in a case/box: 1440 or 3000
     num_of_lenses_per_case = forms.IntegerField(
         label="Enter the total number of lenses in a case/box",
-        widget=forms.NumberInput(attrs={'placeholder': '1440 or 30000'}),
+        widget=forms.NumberInput(attrs={'placeholder': '1440 or 3000'}),
     )
 
     # Quantity of samples: 60–800
@@ -59,9 +59,9 @@ class SplitNoForm(forms.Form):
 
     def clean_num_of_lenses_per_case(self):
         data = self.cleaned_data['num_of_lenses_per_case']
-        if data not in (1440, 30000):
+        if data not in (1440, 3000):
             raise forms.ValidationError(
-                "Invalid input: please enter 1440 or 30000."
+                "Invalid input: please enter 1440 or 3000."
             )
         return data
 

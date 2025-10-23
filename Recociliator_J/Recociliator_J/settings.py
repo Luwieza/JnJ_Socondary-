@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import dj_database_url
 import os
 from pathlib import Path
 
@@ -21,12 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', "django-insecure-de1x9s5_g(tjugcgk@w!ki$_gq1t6d9iu0*tadz)#q2a^6r!5p")
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY', "django-insecure-de1x9s5_g(tjugcgk@w!ki$_gq1t6d9iu0*tadz)#q2a^6r!5p")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,testserver').split(',')
+ALLOWED_HOSTS = os.environ.get(
+    'ALLOWED_HOSTS', 'localhost,127.0.0.1,testserver').split(',')
 
 
 # Application definition
@@ -84,7 +87,6 @@ DATABASES = {
 }
 
 # Production PostgreSQL configuration
-import dj_database_url
 if 'DATABASE_URL' in os.environ:
     DATABASES['default'] = dj_database_url.parse(
         os.environ.get('DATABASE_URL'),
@@ -140,9 +142,12 @@ X_FRAME_OPTIONS = 'DENY'
 
 # Additional security settings (activated by environment variables)
 if not DEBUG:
-    SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT', 'False').lower() == 'true'
-    SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE', 'False').lower() == 'true'
-    CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE', 'False').lower() == 'true'
+    SECURE_SSL_REDIRECT = os.environ.get(
+        'SECURE_SSL_REDIRECT', 'False').lower() == 'true'
+    SESSION_COOKIE_SECURE = os.environ.get(
+        'SESSION_COOKIE_SECURE', 'False').lower() == 'true'
+    CSRF_COOKIE_SECURE = os.environ.get(
+        'CSRF_COOKIE_SECURE', 'False').lower() == 'true'
     SECURE_HSTS_SECONDS = int(os.environ.get('SECURE_HSTS_SECONDS', '0'))
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True

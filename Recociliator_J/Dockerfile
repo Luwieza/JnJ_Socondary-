@@ -23,8 +23,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project
 COPY Recociliator_J/ .
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
+# Run migrations and collect static files
+RUN python manage.py migrate --noinput && python manage.py collectstatic --noinput
 
 # Expose port
 EXPOSE 8000

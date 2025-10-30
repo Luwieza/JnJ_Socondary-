@@ -14,7 +14,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "recociliator",
+    "recociliator",    
 ]
 
 MIDDLEWARE = [
@@ -57,7 +57,8 @@ DATABASES = {
 if 'DATABASE_URL' in os.environ:
     try:
         import dj_database_url
-        DATABASES['default'] = dj_database_url.parse(os.environ['DATABASE_URL'])
+        DATABASES['default'] = dj_database_url.parse(
+            os.environ['DATABASE_URL'])
     except ImportError:
         pass
 

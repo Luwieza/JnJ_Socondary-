@@ -23,8 +23,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project
 COPY Recociliator_J/ .
 
-# Run migrations and collect static files
-RUN python manage.py migrate --noinput && python manage.py collectstatic --noinput
+# Copy the start script and make it executable
+COPY Recociliator_J/start.sh ./start.sh
+RUN chmod +x ./start.sh
 
-# Expose port
-EXPOSE 8000
+# Expose the port that the platform will bind (Railway sets $PORT at runtime)
+EXPOSE 8080
+
+# Use the start script as the container entrypoint. Railway's startCommand will
+# call the script (or the container default will execute it), which runs
+# migrations/collectstatic then execs gunicorn bound to $PORT.
+ENTRYPOINT ["./start.sh"]

@@ -5,7 +5,7 @@
     "dockerfilePath": "Recociliator_J/Dockerfile"
   },
   "deploy": {
-    "startCommand": "sh -lc \"gunicorn --bind 0.0.0.0:$PORT --workers 1 --timeout 300 --log-level info --access-logfile - --error-logfile - Recociliator_J.wsgi:application\"",
+  "startCommand": "sh -lc \"./start.sh\"",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }

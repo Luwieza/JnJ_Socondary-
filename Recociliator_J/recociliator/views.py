@@ -2,7 +2,7 @@
 # - render: to display an HTML template
 # - redirect: to send the user to another page after success
 from .calculation_views import split_yes_result
-from django.shortcuts import render, redirect # type: ignore
+from django.shortcuts import render, redirect  # type: ignore
 from django.http import HttpResponse
 
 # Import the SplitNumberForm you created in forms.py

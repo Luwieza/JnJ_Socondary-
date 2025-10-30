@@ -1,0 +1,1 @@
+web: gunicorn Recociliator_J.wsgi --bind 0.0.0.0:$PORT

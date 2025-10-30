@@ -3,6 +3,7 @@
 # - redirect: to send the user to another page after success
 from .calculation_views import split_yes_result
 from django.shortcuts import render, redirect # type: ignore
+from django.http import HttpResponse
 
 # Import the SplitNumberForm you created in forms.py
 from .form import SplitNumberForm
@@ -69,3 +70,12 @@ def next_step(request):
 def split_yes_result_view(request):
     """Wrapper for the calculation result view"""
     return split_yes_result(request)
+
+
+def health(request):
+    """Lightweight health check endpoint used by load balancers or platforms.
+
+    This intentionally does not touch the database or templates so it is
+    safe to call even if other parts of the app fail. Returns plain text OK.
+    """
+    return HttpResponse("ok", content_type='text/plain')

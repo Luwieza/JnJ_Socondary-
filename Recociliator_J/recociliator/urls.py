@@ -2,7 +2,7 @@
 from django.urls import path
 
 from django.urls import path
-from .views import calculator, split_number, next_step, split_yes_result_view   # views.py
+from .views import calculator, split_number, next_step, split_yes_result_view, health   # views.py
 from .yes_views import split_yes_input
 from .no_views import split_no_input
 
@@ -28,5 +28,7 @@ urlpatterns = [
 
     # Form no input page
     path('split-no/', split_no_input, name='split_no_input'),
+    # Simple healthcheck endpoint for load-balancers / deployment platforms
+    path('_health/', health, name='health'),
 
 ]
